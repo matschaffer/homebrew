@@ -20,6 +20,8 @@ class Riak <Formula
       inreplace "rel/riak/bin/#{file}", /^RUNNER_SCRIPT_DIR.+$/, ""
       inreplace "rel/riak/bin/#{file}", /^RUNNER_BASE_DIR=.+$/, "RUNNER_BASE_DIR=#{prefix}"
     end
+    inreplace "rel/riak/bin/riak", /`ps -ef/, '`ps -e'
+
     system "mv rel/riak/* #{prefix}"
     (prefix + 'data/ring').mkpath
     (prefix + 'data/dets').mkpath
