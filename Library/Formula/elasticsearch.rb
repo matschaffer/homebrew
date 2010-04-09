@@ -7,7 +7,7 @@ class Elasticsearch < Formula
   md5 'c438c0d18bef8d2efd2d801fa872a3fa'
 
   def install
-    prefix.install %w[bin conf lib work]
+    prefix.install %w[bin config lib]
     FileUtils.rm_f Dir["#{bin}/*.bat"]
   end
 end
