@@ -1,18 +1,18 @@
 require 'formula'
 
 class GitManuals < Formula
-  url 'http://kernel.org/pub/software/scm/git/git-manpages-1.7.4.2.tar.bz2'
-  md5 'bd3b79133abb9388318962637df145a7'
+  url 'http://kernel.org/pub/software/scm/git/git-manpages-1.7.5.tar.bz2'
+  md5 '94cf18c292f0db30046092ef306bf57c'
 end
 
 class GitHtmldocs < Formula
-  url 'http://kernel.org/pub/software/scm/git/git-htmldocs-1.7.4.2.tar.bz2'
-  md5 '15d9d5c5b2b1f261fdc15f2dd75bbb86'
+  url 'http://kernel.org/pub/software/scm/git/git-htmldocs-1.7.5.tar.bz2'
+  md5 '563d1cda775abb80750e36d1c7895cb8'
 end
 
 class Git < Formula
-  url 'http://kernel.org/pub/software/scm/git/git-1.7.4.2.tar.bz2'
-  md5 '4b2df3f916061439ae105d7a27637925'
+  url 'http://kernel.org/pub/software/scm/git/git-1.7.5.tar.bz2'
+  md5 '7f0bc26a6e87d251c9b09fa05a186ed3'
   homepage 'http://git-scm.com'
 
   def install
@@ -20,7 +20,7 @@ class Git < Formula
     ENV['NO_FINK']='1'
     ENV['NO_DARWIN_PORTS']='1'
     # If local::lib is used you get a 'Only one of PREFIX or INSTALL_BASE can be given' error
-    ENV['PERL_MM_OPT']='';
+    ENV['PERL_MM_OPT']=''
     # build verbosely so we can debug better
     ENV['V']='1'
 
@@ -37,7 +37,7 @@ class Git < Formula
     # Install emacs support.
     (share+'doc/git-core/contrib').install 'contrib/emacs'
 
-    # Install all other contrib files to share/contrib
+    # Install contrib files to share/contrib
     (share).install 'contrib'
 
     # these files are exact copies of the git binary, so like the contents
@@ -58,9 +58,13 @@ class Git < Formula
   end
 
   def caveats; <<-EOS.undent
-    Bash completion and emacs support have been installed.
+    Bash completion has been installed to:
+      #{prefix}/etc/bash_completion.d/
 
-    The rest of the "contrib" folder has been copied to:
+    Emacs support has been installed to:
+      #{share}/doc/git-core/contrib/emacs/
+
+    The rest of the "contrib" has been installed to:
       #{share}/contrib
     EOS
   end
